@@ -46,10 +46,11 @@ public abstract class Person implements java.io.Serializable {
 		return DOB;
 	}
 
-	public void setDOB(Date DOB){
+	public void setDOB(Date DOB) throws PersonException{
+		if(DOB.getDate() - Calendar.DATE > 100)
+			throw new PersonException(this, "Too old");
+		
 		this.DOB = DOB;
-		
-		
 	}
 
 	public void setAddress(String newAddress) {
@@ -60,7 +61,14 @@ public abstract class Person implements java.io.Serializable {
 		return address;
 	}
 
-	public void setPhone(String newPhone_number) {
+	public void setPhone(String newPhone_number) throws PersonException {
+		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		 
+		Pattern pattern = Pattern.compile(regex);
+		
+		if(pattern.matcher(newPhone_number).equals(false))
+			throw new PersonException(this, "Invalid phone number");
+		
 		phone_number = newPhone_number;
 	
 	}
