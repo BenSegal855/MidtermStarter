@@ -25,6 +25,26 @@ public class Enrollment
 	{
 		Grade = grade;
 	}
+
+	public double getGrade()
+	{
+		return Grade;
+	}
+
+	public UUID getSectionID()
+	{
+		return SectionID;
+	}
+
+	public UUID getStudentID()
+	{
+		return StudentID;
+	}
+
+	public UUID getEnrollmentID()
+	{
+		return EnrollmentID;
+	}
 	
 	
 }
