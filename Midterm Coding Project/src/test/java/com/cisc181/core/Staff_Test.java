@@ -38,7 +38,7 @@ public class Staff_Test {
 				"Friday afternoon", 1, 240000, new Date(112,11,1), eTitle.MR));
 		} catch (PersonException e)
 		{
-			//Gulp
+			fail();
 		}
 		
 	}

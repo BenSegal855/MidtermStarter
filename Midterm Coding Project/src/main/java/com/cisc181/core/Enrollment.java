@@ -10,7 +10,6 @@ public class Enrollment
 	private Enrollment()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Enrollment(UUID sectionID, UUID studentID)
