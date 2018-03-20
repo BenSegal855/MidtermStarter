@@ -47,7 +47,7 @@ public abstract class Person implements java.io.Serializable {
 	}
 
 	public void setDOB(Date DOB) throws PersonException{
-		if(DOB.getDate() - Calendar.DATE > 100)
+		if(DOB.before(new Date(18,3,20)))
 			throw new PersonException(this, "Too old");
 		
 		this.DOB = DOB;
@@ -66,7 +66,8 @@ public abstract class Person implements java.io.Serializable {
 		 
 		Pattern pattern = Pattern.compile(regex);
 		
-		if(pattern.matcher(newPhone_number).equals(false))
+		Matcher matcher = pattern.matcher(newPhone_number);
+		if(!matcher.matches())
 			throw new PersonException(this, "Invalid phone number");
 		
 		phone_number = newPhone_number;
@@ -97,7 +98,7 @@ public abstract class Person implements java.io.Serializable {
 	 */
 
 	public Person(String FirstName, String MiddleName, String LastName,
-			Date DOB, String Address, String Phone_number, String Email)
+			Date DOB, String Address, String Phone_number, String Email) throws PersonException
 	{
 		this.FirstName = FirstName;
 		this.MiddleName = MiddleName;
